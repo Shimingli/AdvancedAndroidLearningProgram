@@ -32,13 +32,21 @@ public class CustomViewDemo1 extends View {
     }
 
     Paint mPaint = new Paint();
+
     Path path = new Path(); // 初始化 Path 对象
+    //Path 可以描述直线、二次曲线、三次曲线、圆、椭圆、弧形、矩形、圆角矩形。
+    //把这些图形结合起来，就可以描述出很多复杂的图形。 下面是画的是心得形状
     {
         // 使用 path 对图形进行描述（这段描述代码不必看懂）
         path.addArc(200, 200, 400, 400, -225, 225);
         path.arcTo(400, 200, 600, 400, -180, 225, false);
         path.lineTo(400, 542);
     }
+
+    //辅助的类的计算
+    Path mPath=new Path();
+
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -50,11 +58,77 @@ public class CustomViewDemo1 extends View {
 
         //function3(canvas);
 
-        //drawPath(Path path, Paint paint) 画自定义图形
+        //function4(canvas);
+
+//        mPaint.setColor(Color.RED);
+//        mPaint.setStyle(Paint.Style.STROKE);
+//        //由当前位置 (0, 0) 向 (100, 100) 画一条直线
+//        mPath.lineTo(100,100);
+//        // 由当前位置 (100, 100) 向正右方 100 像素的位置画一
+//        mPath.rLineTo(100,1200);
+//        canvas.drawPath(mPath,mPaint);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setColor(Color.GREEN);
+        mPaint.setStrokeWidth(2);
+        mPath.reset();
+        /*
+        贝塞尔曲线：贝塞尔曲线是几何上的一种曲线。它通过起点、控制点和终点来
+        描述一条曲线，主要用于计算机图形学。概念总是说着容易听着难，总之使用
+        它可以绘制很多圆润又好看的图形，但要把它熟练掌握、灵活使用却是不容易
+        的。不过还好的是，一般情况下，贝塞尔曲线并没有什么用处，只在少数场景
+        下绘制一些特殊图形的时候才会用到，所以如果你还没掌握自定义绘制，可以
+        先把贝塞尔曲线放一放，稍后再学也完全没问题。
+         */
+        //而参数中的 x1 , y1 和 x2 , y2 则分别
+        //是控制点和终点的坐标   起点是屏幕的左上角
+        mPath.quadTo(100,100,800,200);
+        //这边也是同理 dx1,dy1,dx2,dy2 也是控制点和终点的坐标
+        mPath.rQuadTo(300,100,100,500);
+        canvas.drawPath(mPath,mPaint);
+        /**
+         * cubicTo(oat x1, oat y1, oat x2, oat y2, oat x3, oat y3) /
+         * rCubicTo(oat x1, oat y1, oat x2, oat y2, oat x3, oat y3) 画三次贝塞
+         * 尔曲线
+         * 和上面这个 quadTo() rQuadTo() 的二次贝塞尔曲线同理，cubicTo() 和
+         * rCubicTo() 是三次贝塞尔曲线，不再解释。
+          */
+        //只不过呢 (x1,y1) and (x2,y2)是控制点, and ending at (x3,y3).用法其实差不多呀！
+    }
+
+    /**
+     * 的 Path.add-() 方法和这类似，例如：
+     * addOval(oat left, oat top, oat right, oat bottom, Direction dir) /
+     * addOval(RectF oval, Direction dir) 添加椭圆
+     * addRect(oat left, oat top, oat right, oat bottom, Direction dir) /
+     * addRect(RectF rect, Direction dir) 添加矩形
+     * addRoundRect(RectF rect, oat rx, oat ry, Direction dir) /
+     * addRoundRect(oat left, oat top, oat right, oat bottom, oat rx,
+     * oat ry, Direction dir) / addRoundRect(RectF rect, oat[] radii,
+     * Direction dir) / addRoundRect(oat left, oat top, oat right, oat
+     * bottom, oat[] radii, Direction dir) 添加圆角矩形
+     * addPath(Path path) 添加另一个 Path
+     * 上面这几个方法和 addCircle() 的使用都差不多，
+     * @param canvas
+     */
+    private void function4(Canvas canvas) {
+        // 画自定义图形
+        // 一类是自己独立描述路径，一类是辅助的设置或者是计算
         canvas.drawPath(path,mPaint);
-
-
-
+        //路径方向有两种：顺时针 ( CW clockwise) 和逆时针 ( CCW counter-clockwise) 。
+        //对于普通情况，这个参数填 CW 还是填 CCW 没有影响。它只是在需要填充图形
+        //( Paint.Style 为 FILL 或 FILL_AND_STROKE ) ，并且图形出现自相交时，用
+        //于判断填充范围的
+        mPaint.setStyle(Paint.Style.FILL);
+        /*
+        path.AddCircle(x, y, radius, dir) +
+        canvas.drawPath(path, paint) 这种写法，和直接使用
+        canvas.drawCircle(x, y, radius, paint) 的效果是一样的，区别只是它的写
+       法更复杂。所以如果只画一个圆，没必要用 Path ，直接用 drawCircle() 就行
+      了。drawPath() 一般是在绘制组合图形时才会用到的。
+         */
+        mPath.addCircle(500,900,200, Path.Direction.CW);
+        mPath.addCircle(700,900,200, Path.Direction.CCW);
+        canvas.drawPath(mPath,mPaint);
 
     }
 
