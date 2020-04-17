@@ -1,17 +1,20 @@
 package com.lsm.advancedandroid.learningprogram.custom_view;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 /**
  * @NAME: CustomViewDemo1
@@ -23,17 +26,23 @@ import android.widget.TextView;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 @SuppressLint("AppCompatCustomView")
 public class CustomViewDemo1 extends View {
+
+    private Context mContext;
+
     public CustomViewDemo1(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public CustomViewDemo1(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
+
     }
 
     Paint mPaint = new Paint();
 
     Path path = new Path(); // 初始化 Path 对象
+
     //Path 可以描述直线、二次曲线、三次曲线、圆、椭圆、弧形、矩形、圆角矩形。
     //把这些图形结合起来，就可以描述出很多复杂的图形。 下面是画的是心得形状
     {
@@ -44,7 +53,7 @@ public class CustomViewDemo1 extends View {
     }
 
     //辅助的类的计算
-    Path mPath=new Path();
+    Path mPath = new Path();
 
 
     @Override
@@ -58,9 +67,75 @@ public class CustomViewDemo1 extends View {
 
         //function3(canvas);
 
+
         //function4(canvas);
 
-//        mPaint.setColor(Color.RED);
+
+        //function5(canvas);
+
+        //function6(canvas);
+
+        /**
+         * 字图形没有被封闭
+         */
+        mPaint.setStyle(Paint.Style.FILL);
+        path.reset();
+        path.moveTo(100, 100);
+        path.lineTo(200, 100);
+        path.lineTo(150, 150);
+        path.setFillType(Path.FillType.EVEN_ODD);
+        //封闭图形，相当于 path.lineTo(100,100)  close() 和 lineTo(起点坐标) 是完全等价的。
+        path.close();
+        canvas.drawPath(path,mPaint);
+
+
+        mPaint.setColor(Color.GREEN);
+        DisplayMetrics dm = new DisplayMetrics();
+        ((Activity)mContext).getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+         Bitmap    bitmap = Bitmap.createBitmap(dm.widthPixels, dm.heightPixels, Bitmap.Config.ARGB_8888);
+        //用指定的方式填充位图的像素。
+        bitmap.eraseColor(Color.rgb(Color.red(mPaint.getColor()),
+                Color.green(mPaint.getColor()), Color.blue(mPaint.getColor())));
+        canvas.drawBitmap(bitmap, 200, 200, mPaint);
+
+
+    }
+
+    private void function6(Canvas canvas) {
+        //画的椭圆
+//        mPaint.setStyle(Paint.Style.FILL); // 填充模式
+//        canvas.drawArc(200, 100, 800, 500, -110, 100, true, mPaint); // 绘制扇
+//        canvas.drawArc(200, 100, 800, 500, 20, 140, false, mPaint); // 绘制弧形
+//        mPaint.setStyle(Paint.Style.STROKE); // 画线模式
+//        canvas.drawArc(200, 100, 800, 500, 180, 60, false, mPaint); // 绘制不
+
+
+        mPaint.setStyle(Paint.Style.STROKE);
+        path.reset();
+        path.lineTo(100, 100);
+        //画弧形
+        /*
+        forceMoveTo 参数的意思是，绘制是要「抬一
+        下笔移动过去」，还是「直接拖着笔过去」，区别在于是否留下移动的痕
+         */
+        path.arcTo(100, 100, 300, 300, -90, 90, false); //
+
+        /*
+        一个叫 arcTo ，一个叫 addArc()，都是弧形，区别在哪
+      里？其实很简单： addArc() 只是一个直接使用了 forceMoveTo = true 的简化版
+       arcTo() 。
+      paint.
+         */
+        canvas.drawPath(path,mPaint);
+
+        mPaint.setStyle(Paint.Style.STROKE);
+        path.lineTo(100, 100);
+        path.addArc(100, 100, 300, 300, -90, 90);
+    }
+
+    private void function5(Canvas canvas) {
+        //        mPaint.setColor(Color.RED);
 //        mPaint.setStyle(Paint.Style.STROKE);
 //        //由当前位置 (0, 0) 向 (100, 100) 画一条直线
 //        mPath.lineTo(100,100);
@@ -81,17 +156,17 @@ public class CustomViewDemo1 extends View {
          */
         //而参数中的 x1 , y1 和 x2 , y2 则分别
         //是控制点和终点的坐标   起点是屏幕的左上角
-        mPath.quadTo(100,100,800,200);
+        mPath.quadTo(100, 100, 800, 200);
         //这边也是同理 dx1,dy1,dx2,dy2 也是控制点和终点的坐标
-        mPath.rQuadTo(300,100,100,500);
-        canvas.drawPath(mPath,mPaint);
+        mPath.rQuadTo(300, 100, 100, 500);
+        canvas.drawPath(mPath, mPaint);
         /**
          * cubicTo(oat x1, oat y1, oat x2, oat y2, oat x3, oat y3) /
          * rCubicTo(oat x1, oat y1, oat x2, oat y2, oat x3, oat y3) 画三次贝塞
          * 尔曲线
          * 和上面这个 quadTo() rQuadTo() 的二次贝塞尔曲线同理，cubicTo() 和
          * rCubicTo() 是三次贝塞尔曲线，不再解释。
-          */
+         */
         //只不过呢 (x1,y1) and (x2,y2)是控制点, and ending at (x3,y3).用法其实差不多呀！
     }
 
@@ -108,12 +183,13 @@ public class CustomViewDemo1 extends View {
      * bottom, oat[] radii, Direction dir) 添加圆角矩形
      * addPath(Path path) 添加另一个 Path
      * 上面这几个方法和 addCircle() 的使用都差不多，
+     *
      * @param canvas
      */
     private void function4(Canvas canvas) {
         // 画自定义图形
         // 一类是自己独立描述路径，一类是辅助的设置或者是计算
-        canvas.drawPath(path,mPaint);
+        canvas.drawPath(path, mPaint);
         //路径方向有两种：顺时针 ( CW clockwise) 和逆时针 ( CCW counter-clockwise) 。
         //对于普通情况，这个参数填 CW 还是填 CCW 没有影响。它只是在需要填充图形
         //( Paint.Style 为 FILL 或 FILL_AND_STROKE ) ，并且图形出现自相交时，用
@@ -126,9 +202,9 @@ public class CustomViewDemo1 extends View {
        法更复杂。所以如果只画一个圆，没必要用 Path ，直接用 drawCircle() 就行
       了。drawPath() 一般是在绘制组合图形时才会用到的。
          */
-        mPath.addCircle(500,900,200, Path.Direction.CW);
-        mPath.addCircle(700,900,200, Path.Direction.CCW);
-        canvas.drawPath(mPath,mPaint);
+        mPath.addCircle(500, 900, 200, Path.Direction.CW);
+        mPath.addCircle(700, 900, 200, Path.Direction.CCW);
+        canvas.drawPath(mPath, mPaint);
 
     }
 
