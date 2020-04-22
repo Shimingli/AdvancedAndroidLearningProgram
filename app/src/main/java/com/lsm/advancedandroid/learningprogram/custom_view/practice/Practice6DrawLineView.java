@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-
+@Deprecated
 public class Practice6DrawLineView extends View {
 
     public Practice6DrawLineView(Context context) {
