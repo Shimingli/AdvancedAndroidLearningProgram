@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     List<PageModel> pageModels = new ArrayList<>();
 
     {
+        pageModels.add(new PageModel(R.layout.custom_view_demo, R.string.custom_view_demo, R.layout.custom_view_demo));
+        pageModels.add(new PageModel(R.layout.custom_view_demo2, R.string.custom_view_demo2, R.layout.custom_view_demo2));
         pageModels.add(new PageModel(R.layout.sample_color, R.string.title_draw_color, R.layout.practice_color));
         pageModels.add(new PageModel(R.layout.sample_circle, R.string.title_draw_circle, R.layout.practice_circle));
         pageModels.add(new PageModel(R.layout.sample_rect, R.string.title_draw_rect, R.layout.practice_rect));

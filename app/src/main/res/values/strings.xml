@@ -12,7 +12,8 @@
     <string name="title_draw_path">drawPath()</string>
     <string name="title_draw_histogram">直方图</string>
     <string name="title_draw_pie_chart">饼图</string>
-
+    <string name="custom_view_demo">自定义Demo</string>
+    <string name="custom_view_demo2">Paint 详解</string>
 
 
 </resources>
