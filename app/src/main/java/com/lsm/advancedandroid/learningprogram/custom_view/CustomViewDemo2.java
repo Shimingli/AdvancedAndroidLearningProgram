@@ -79,7 +79,7 @@ public class CustomViewDemo2 extends View {
      *
      *
      * setXfermode() 用来处理源图像和 View 已有内容的关系：paint.setXfermode(xfermode); // 设置 Xfermode
-
+     https://github.com/chengdazhi/StyleImageView  这个做的很好 对piant的颜色的处理
      * @param canvas
      */
     private void color(Canvas canvas) {
