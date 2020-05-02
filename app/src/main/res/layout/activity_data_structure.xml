@@ -9,6 +9,7 @@
     tools:context=".datastructure.DataStructureActivity">
 
     <TextView
+        android:background="@color/clr_F9050d"
         android:layout_margin="10dp"
         android:text="testHaspMap"
         android:id="@+id/testHaspMap"
@@ -16,6 +17,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:background="@color/clr_F9050d"
         android:layout_margin="10dp"
         android:text="testSparseArray"
         android:id="@+id/testSparseArray"

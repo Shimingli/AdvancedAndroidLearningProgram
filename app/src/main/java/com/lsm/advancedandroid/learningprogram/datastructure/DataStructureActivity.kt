@@ -21,19 +21,35 @@ class DataStructureActivity : AppCompatActivity(), View.OnClickListener {
 
         testHaspMap.setOnClickListener(this)
         testSparseArray.setOnClickListener(this)
-        object : AsyncTask<Void?, Void?, Void?>() {
-
-            override fun doInBackground(vararg params: Void?): Void? {
-                for (i in 0..99999) {
-                    hashMap[i]="Demo"
-                }
-                return null
-            }
-        }.execute()
 
     }
-
+    @SuppressLint("StaticFieldLeak")
     override fun onClick(v: View?) {
+       when(v?.id){
+           R.id.testSparseArray->{
+               object : AsyncTask<Void?, Void?, Void?>() {
+                   override fun doInBackground(vararg params: Void?): Void? {
+                       for (i in 0..99) {
+                           sparseArray.put(i,"Demo")
+                           println("shiming testSparseArray  i-=="+i)
+                       }
+                       return null
+                   }
+               }.execute()
+           }
+           R.id.testHaspMap->{
+               object : AsyncTask<Void?, Void?, Void?>() {
 
+                   override fun doInBackground(vararg params: Void?): Void? {
+                       for (i in 0..99) {
+                           hashMap[i]="Demo"
+                           println("shiming  testHaspMap  i-=="+i)
+                       }
+                       return null
+                   }
+               }.execute()
+           }
+
+       }
     }
 }
