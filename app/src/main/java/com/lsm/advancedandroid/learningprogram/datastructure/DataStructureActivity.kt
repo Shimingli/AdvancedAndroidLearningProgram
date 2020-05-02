@@ -44,7 +44,7 @@ class DataStructureActivity : AppCompatActivity(), View.OnClickListener {
                        for (i in 0..99) {
                            hashMap[i]="Demo"
                            println("shiming  testHaspMap  i-=="+i)
-                       }
+                   }
                        return null
                    }
                }.execute()
