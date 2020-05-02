@@ -1,7 +1,6 @@
 package com.lsm.advancedandroid.learningprogram.custom_view;
 
 import android.os.Bundle;
-
 import android.view.Menu;
 
 import androidx.annotation.LayoutRes;
@@ -21,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager pager;
     List<PageModel> pageModels = new ArrayList<>();
+    PageModel[] pageModels1= new PageModel[]{};
+
 
     {
         pageModels.add(new PageModel(R.layout.custom_view_demo, R.string.custom_view_demo, R.layout.custom_view_demo,false));
