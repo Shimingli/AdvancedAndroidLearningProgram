@@ -9,15 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity android:name=".image_compression.ImageCompressionActivity"></activity>-->
+<!--        <activity android:name=".aidl_demo.AIDLDemoActivity"></activity>-->
+        <!-- <activity android:name=".image_compression.ImageCompressionActivity"></activity> -->
         <!-- <activity android:name=".datastructure.DataStructureActivity"></activity> -->
-        <activity android:name=".image_compression.ImageCompressionActivity">
+        <activity android:name=".aidl_demo.AIDLDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--        进程名称要加上： -->
+        <service android:name=".aidl_demo.GPSService"
+            android:process=":gps"
+            />
     </application>
 
 </manifest>
