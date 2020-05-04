@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity android:name=".aidl_demo.AIDLDemoActivity"></activity>-->
-        <!-- <activity android:name=".image_compression.ImageCompressionActivity"></activity> -->
-        <!-- <activity android:name=".datastructure.DataStructureActivity"></activity> -->
-        <activity android:name=".aidl_demo.AIDLDemoActivity">
+
+         <activity android:name=".image_compression.ImageCompressionActivity"/>
+         <activity android:name=".datastructure.DataStructureActivity"/>
+        <activity android:name=".aidl_demo.AIDLDemoActivity"/>
+        <activity android:name=".jetpack.JetPackActivity"/>
+        <activity android:name=".proxy.ProxyActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +26,7 @@
         <service android:name=".aidl_demo.GPSService"
             android:process=":gps"
             />
+        <activity android:name=".custom_view.CustomViewActivity" />
     </application>
 
 </manifest>

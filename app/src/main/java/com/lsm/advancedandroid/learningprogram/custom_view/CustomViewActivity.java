@@ -16,7 +16,7 @@ import com.lsm.advancedandroid.learningprogram.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class CustomViewActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager pager;
     List<PageModel> pageModels = new ArrayList<>();
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_custom_view_layout);
 
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {

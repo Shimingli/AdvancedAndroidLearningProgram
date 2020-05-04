@@ -9,6 +9,8 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.ComposeShader;
 import android.graphics.LightingColorFilter;
 import android.graphics.LinearGradient;
@@ -59,27 +61,34 @@ public class CustomViewDemo2 extends View {
         super.onDraw(canvas);
 //        Paint 的 API 大致可以分为 4 类：
 //        颜色 效果 drawText()相关 初始化
+        // color(canvas);
 
-        color(canvas);
+        //效果类的 API ，指的就是抗锯齿、填充/轮廓、线条宽度等等这些。
+
+        effect();
 
 
     }
 
+    private void effect() {
+
+    }
+
     /**
-     *
      * 关于颜色的三层设置：直接
      * 设置颜色的 API 用来给图形和文字设置颜色；
      * canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);    canvas 的参数
      * canvas.drawBitmap(circleBitmap, 0, 0, paint);   bitmap的参数
      * paint.setShader(linearGradient);   paint的参数
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * setColorFilter() 用来基于颜色进行过滤处理； paint4.setColorFilter(lightingColorFilter);
-     *
-     *
+     * <p>
+     * <p>
      * setXfermode() 用来处理源图像和 View 已有内容的关系：paint.setXfermode(xfermode); // 设置 Xfermode
-     https://github.com/chengdazhi/StyleImageView  这个做的很好 对piant的颜色的处理
+     * https://github.com/chengdazhi/StyleImageView  这个做的很好 对piant的颜色的处理
+     *
      * @param canvas
      */
     private void color(Canvas canvas) {
@@ -230,11 +239,11 @@ tileMode ：辐射范围之外的着色模式。
         //改光照的颜色 滤镜？？？
         // TODO: 4/24/2020 https://github.com/chengdazhi/StyleImageView/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E%E9%A1%B5
         //
-        ColorFilter lightingColorFilter = new LightingColorFilter(0xffffff,0x003000);
+        ColorFilter lightingColorFilter = new LightingColorFilter(0xffffff, 0x003000);
         paint4.setColorFilter(lightingColorFilter);
         Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(), R.mipmap.device);
-         //
-        canvas.drawBitmap(bitmap3,500,500,paint4);
+        //
+        canvas.drawBitmap(bitmap3, 500, 500, paint4);
 
         /**
          * PorterDuffColorFilter
@@ -246,7 +255,8 @@ tileMode ：辐射范围之外的着色模式。
          * ColorFilter，只能指定一种颜色作为源，而不是一个 Bitmap。
          */
 
-
+        ColorMatrixColorFilter colorMatrixColorFilter = new ColorMatrixColorFilter(new ColorMatrix());
+        paint.setColorFilter(colorMatrixColorFilter);
         /**
          * ColorMatrixColorFilter
          * 这个就厉害了。ColorMatrixColorFilter 使用一个 ColorMatrix 来对颜色进行
@@ -291,9 +301,6 @@ tileMode ：辐射范围之外的着色模式。
         paint.setXfermode(xfermode); // 设置 Xfermode
         canvas.drawBitmap(bitmap3, 0, 0, paint); // 画圆
         paint.setXfermode(null); // 用完及时清除 Xfermode
-
-
-
 
 
     }

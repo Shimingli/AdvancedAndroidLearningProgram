@@ -5,4 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="clr_F9050d">#F9050d</color>
     <color name="clr_Ff0000">#ff0000</color>
+    <color name="clr_balck">#665566</color>
+    <color name="clr_FFFFFF">#ffffff</color>
 </resources>

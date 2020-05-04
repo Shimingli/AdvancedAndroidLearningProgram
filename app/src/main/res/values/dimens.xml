@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_10" >10dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="activity_contacts_name">14dip</dimen>
+    <dimen name="activity_contacts_number">8dip</dimen>
+
+    <dimen name="activity_phone_bt">22dip</dimen>
+    <dimen name="activity_phone_tv">40dip</dimen>
+</resources>

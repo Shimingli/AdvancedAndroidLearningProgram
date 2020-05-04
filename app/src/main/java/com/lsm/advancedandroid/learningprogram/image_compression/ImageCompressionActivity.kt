@@ -1,5 +1,6 @@
 package com.lsm.advancedandroid.learningprogram.image_compression
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -10,6 +11,7 @@ import java.io.ByteArrayOutputStream
 
 class ImageCompressionActivity : AppCompatActivity() {
 
+    @SuppressLint("WrongThread")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_compression)

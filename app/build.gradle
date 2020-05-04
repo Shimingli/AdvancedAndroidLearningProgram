@@ -14,6 +14,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+        //  jetpack  dataBinding 的引入  方式一
+        dataBinding {
+            enabled true
+        }
+
+        // 方式二
+        // dataBinding.enabled=true
     }
 
     buildTypes {
@@ -40,4 +49,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //getpack
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 }

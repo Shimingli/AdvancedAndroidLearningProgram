@@ -5,23 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f8f8f8"
-    >
+    android:gravity="center_horizontal"
+    android:background="#f8f8f8">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
+   <TextView
+       android:background="@color/clr_balck"
+       android:padding="@dimen/dp_10"
+       android:textColor="@color/clr_FFFFFF"
+       android:text="自定义View"
+       android:id="@+id/mGotoCustomViewActivity"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"/>
 
-        app:tabSelectedTextColor="@color/clr_F9050d"
-        app:tabTextColor="@color/colorPrimary"
-        android:background="@android:color/white"
-        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-        app:tabMode="scrollable" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+   <TextView
+       android:background="@color/clr_balck"
+       android:padding="@dimen/dp_10"
+       android:textColor="@color/clr_FFFFFF"
+       android:text="Proxy"
+       android:id="@+id/mProxyViewActivity"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"/>
+
+   <TextView
+       android:background="@color/clr_balck"
+       android:padding="@dimen/dp_10"
+       android:textColor="@color/clr_FFFFFF"
+       android:text="JetPack"
+       android:id="@+id/mJetPackActivity"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"/>
 
 </LinearLayout>
