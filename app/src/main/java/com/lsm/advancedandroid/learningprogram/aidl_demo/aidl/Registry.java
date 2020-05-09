@@ -32,6 +32,6 @@ public class Registry {
      */
     public void register(Class<?> clazz) {
 
-        clazz.getAnnotation()
+//        clazz.getAnnotation()
     }
 }

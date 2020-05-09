@@ -1,3 +1,4 @@
 rootProject.name='AdvancedAndroidLearningProgram'
 include ':app'
 include ':libThreadDemo'
+include ':aidlframe'
