@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-         <activity android:name=".image_compression.ImageCompressionActivity"/>
-         <activity android:name=".datastructure.DataStructureActivity"/>
-        <activity android:name=".aidl_demo.AIDLDemoActivity"/>
-        <activity android:name=".jetpack.JetPackActivity"/>
+        <activity android:name=".image_compression.ImageCompressionActivity" />
+        <activity android:name=".datastructure.DataStructureActivity" />
+        <activity android:name=".aidl_demo.demo.AIDLUseDemoActivity" />
+        <activity android:name=".jetpack.JetPackActivity" />
         <activity android:name=".proxy.ProxyActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -22,10 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        进程名称要加上： -->
-        <service android:name=".aidl_demo.GPSService"
-            android:process=":gps"
-            />
+        <!--        进程名称要加上： -->
+        <service
+            android:name=".aidl_demo.GPSService"
+            android:process=":gps" />
+        <!--   android:exported="true" 当前service是否可以被另一个Application的组件启动：true允许被启动
+        ；false不允许被启动。
+          如果Service等的AndroidManifest中声明为android:exported="false"
+则该服务不能够跨进程使用。
+        -->
+
+
+        <service
+            android:name=".aidl_demo.demo.DemoService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".custom_view.CustomViewActivity" />
     </application>
 

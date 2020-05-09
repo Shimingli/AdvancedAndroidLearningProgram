@@ -52,4 +52,6 @@ dependencies {
 
     //getpack
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    implementation project(':aidlframe')
 }
