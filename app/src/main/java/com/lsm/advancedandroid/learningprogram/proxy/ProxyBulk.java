@@ -6,9 +6,7 @@ import android.util.Log;
 
 import java.lang.reflect.Method;
 
-/**
- * Created by dingjikerbo on 2016/9/18.
- */
+
 public class ProxyBulk {
     public static final String TAG="ProxyBulk";
     public Object object;

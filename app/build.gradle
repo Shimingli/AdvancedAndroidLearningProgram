@@ -24,6 +24,10 @@ android {
         // 方式二
         // dataBinding.enabled=true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     buildTypes {
         release {
@@ -52,6 +56,8 @@ dependencies {
 
     //getpack
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
 
     implementation project(':aidlframe')
 }
