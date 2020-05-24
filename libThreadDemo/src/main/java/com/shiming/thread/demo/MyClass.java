@@ -4,7 +4,7 @@ public class MyClass {
 
 //    HashMap
 
-    ThreadLocal
+//    ThreadLocal
 
 
 }

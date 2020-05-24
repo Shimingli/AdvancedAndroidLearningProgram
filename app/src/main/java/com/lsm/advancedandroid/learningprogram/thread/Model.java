@@ -2,6 +2,7 @@ package com.lsm.advancedandroid.learningprogram.thread;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,6 +19,12 @@ public class Model {
     private static Model model = new Model();
 
     private Model() {
+//        ThreadLocal
+
+//        AtomicInteger
+//        ArrayBlockingQueue
+
+        ArrayList
 
     }
 
