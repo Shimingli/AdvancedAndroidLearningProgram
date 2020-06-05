@@ -49,6 +49,8 @@ public class LockDemo {
 
     public static void main(String[] args) {
         LockDemo lockDemo = new LockDemo();
+
+        lockDemo.incr2();
     }
 
 }
