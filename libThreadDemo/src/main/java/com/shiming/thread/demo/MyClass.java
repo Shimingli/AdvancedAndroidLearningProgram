@@ -12,3 +12,5 @@ public class MyClass {
         System.out.println(int1 == int2); // 檢查兩者的參考位置，false
     }
 }
+
+

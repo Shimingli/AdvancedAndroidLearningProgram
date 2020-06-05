@@ -61,6 +61,8 @@ dependencies {
 
     implementation project(':aidlframe')
 
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 
     // 依赖RxAndroid 2X 的依赖库
     // 增加RxJava 2X 的依赖库
@@ -95,4 +97,3 @@ dependencies {
 
 
 }
-

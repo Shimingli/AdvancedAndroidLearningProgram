@@ -2,6 +2,8 @@ package com.lsm.advancedandroid.learningprogram.thread;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,11 +20,26 @@ public class Model {
     private static Model model = new Model();
 
     private Model() {
+//        ThreadLocal
+
+//        AtomicInteger
+//        ArrayBlockingQueue
+
+//        ArrayList
+
+
+//        BlockingQueue
+
+//        ReentrantLock
+
+        Gson gson = new Gson();
+        String s = gson.toJson("1");
 
     }
 
+
     // 获得单例对象
-    public static Model getInstance() {
+   public static Model getInstance() {
         return model;
     }
 
